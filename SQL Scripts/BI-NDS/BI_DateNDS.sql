@@ -164,7 +164,14 @@ SELECT @dayCount = count(*) FROM Day
 EXEC HourData @dayCount
 GO
 
+select * from Year
 select * from Month
 select * from Day
 select * from Hour
 
+select * from Hour h join Day d 
+	on h.DayId = d.DayId join Month m
+	on d.MonthId = m.MonthId join Year y
+	on m.YearId = y.YearId
+
+	and h.Hour = 0 and d.Day = 1 and m.Month = 1 and y.Year = 2011
